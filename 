@@ -1,0 +1,166 @@
+[33mcommit c159838dc2d285b7b1a65131cf09a92571162431[m
+Author: DESKTOP-GLD3923\Adriana <yovanotti2004@gmail.com>
+Date:   Wed Sep 13 13:22:36 2017 -0400
+
+    Adding All files
+
+[1mdiff --git a/.editorconfig b/.editorconfig[m
+[1mnew file mode 100644[m
+[1mindex 0000000..1b44e42[m
+[1m--- /dev/null[m
+[1m+++ b/.editorconfig[m
+[36m@@ -0,0 +1,13 @@[m
+[32m+[m[32m# editorconfig.org[m
+[32m+[m
+[32m+[m[32mroot = true[m
+[32m+[m
+[32m+[m[32m[*][m
+[32m+[m[32mcharset = utf-8[m
+[32m+[m[32mindent_size = 4[m
+[32m+[m[32mindent_style = space[m
+[32m+[m[32minsert_final_newline = true[m
+[32m+[m[32mtrim_trailing_whitespace = true[m
+[32m+[m
+[32m+[m[32m[*.md][m
+[32m+[m[32mtrim_trailing_whitespace = false[m
+[1mdiff --git a/.gitattributes b/.gitattributes[m
+[1mnew file mode 100644[m
+[1mindex 0000000..176a458[m
+[1m--- /dev/null[m
+[1m+++ b/.gitattributes[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32m* text=auto[m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..16b2d7d[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,2 @@[m
+[32m+[m[32m# Include your project-specific ignores in this file[m
+[32m+[m[32m# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files[m
+[1mdiff --git a/.htaccess b/.htaccess[m
+[1mnew file mode 100644[m
+[1mindex 0000000..446a926[m
+[1m--- /dev/null[m
+[1m+++ b/.htaccess[m
+[36m@@ -0,0 +1,984 @@[m
+[32m+[m[32m# Apache Server Configs v2.14.0 | MIT License[m
+[32m+[m[32m# https://github.com/h5bp/server-configs-apache[m
+[32m+[m
+[32m+[m[32m# (!) Using `.htaccess` files slows down Apache, therefore, if you have[m
+[32m+[m[32m# access to the main server configuration file (which is usually called[m
+[32m+[m[32m# `httpd.conf`), you should add this logic there.[m
+[32m+[m[32m#[m
+[32m+[m[32m# https://httpd.apache.org/docs/current/howto/htaccess.html.[m
+[32m+[m
+[32m+[m[32m# ######################################################################[m
+[32m+[m[32m# # CROSS-ORIGIN                                                       #[m
+[32m+[m[32m# ######################################################################[m
+[32m+[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m[32m# | Cross-origin requests                                              |[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m# Allow cross-origin requests.[m
+[32m+[m[32m#[m
+[32m+[m[32m# https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS[m
+[32m+[m[32m# http://enable-cors.org/[m
+[32m+[m[32m# http://www.w3.org/TR/cors/[m
+[32m+[m
+[32m+[m[32m# <IfModule mod_headers.c>[m
+[32m+[m[32m#     Header set Access-Control-Allow-Origin "*"[m
+[32m+[m[32m# </IfModule>[m
+[32m+[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m[32m# | Cross-origin images                                                |[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m# Send the CORS header for images when browsers request it.[m
+[32m+[m[32m#[m
+[32m+[m[32m# https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image[m
+[32m+[m[32m# https://blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html[m
+[32m+[m
+[32m+[m[32m<IfModule mod_setenvif.c>[m
+[32m+[m[32m    <IfModule mod_headers.c>[m
+[32m+[m[32m        <FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">[m
+[32m+[m[32m            SetEnvIf Origin ":" IS_CORS[m
+[32m+[m[32m            Header set Access-Control-Allow-Origin "*" env=IS_CORS[m
+[32m+[m[32m        </FilesMatch>[m
+[32m+[m[32m    </IfModule>[m
+[32m+[m[32m</IfModule>[m
+[32m+[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m[32m# | Cross-origin web fonts                                             |[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m# Allow cross-origin access to web fonts.[m
+[32m+[m
+[32m+[m[32m<IfModule mod_headers.c>[m
+[32m+[m[32m    <FilesMatch "\.(eot|otf|tt[cf]|woff2?)$">[m
+[32m+[m[32m        Header set Access-Control-Allow-Origin "*"[m
+[32m+[m[32m    </FilesMatch>[m
+[32m+[m[32m</IfModule>[m
+[32m+[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m[32m# | Cross-origin resource timing                                       |[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m# Allow cross-origin access to the timing information for all resources.[m
+[32m+[m[32m#[m
+[32m+[m[32m# If a resource isn't served with a `Timing-Allow-Origin` header that[m
+[32m+[m[32m# would allow its timing information to be shared with the document,[m
+[32m+[m[32m# some of the attributes of the `PerformanceResourceTiming` object will[m
+[32m+[m[32m# be set to zero.[m
+[32m+[m[32m#[m
+[32m+[m[32m# http://www.w3.org/TR/resource-timing/[m
+[32m+[m[32m# http://www.stevesouders.com/blog/2014/08/21/resource-timing-practical-tips/[m
+[32m+[m
+[32m+[m[32m# <IfModule mod_headers.c>[m
+[32m+[m[32m#     Header set Timing-Allow-Origin: "*"[m
+[32m+[m[32m# </IfModule>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m# ######################################################################[m
+[32m+[m[32m# # ERRORS                                                             #[m
+[32m+[m[32m# ######################################################################[m
+[32m+[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m[32m# | Custom error messages/pages                                        |[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m# Customize what Apache returns to the client in case of an error.[m
+[32m+[m[32m# https://httpd.apache.org/docs/current/mod/core.html#errordocument[m
+[32m+[m
+[32m+[m[32mErrorDocument 404 /404.html[m
+[32m+[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m[32m# | Error prevention                                                   |[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m# Disable the pattern matching based on filenames.[m
+[32m+[m[32m#[m
+[32m+[m[32m# This setting prevents Apache from returning a 404 error as the result[m
+[32m+[m[32m# of a rewrite when the directory with the same name does not exist.[m
+[32m+[m[32m#[m
+[32m+[m[32m# https://httpd.apache.org/docs/current/content-negotiation.html#multiviews[m
+[32m+[m
+[32m+[m[32mOptions -MultiViews[m
+[32m+[m
+[32m+[m
+[32m+[m[32m# ######################################################################[m
+[32m+[m[32m# # INTERNET EXPLORER                                                  #[m
+[32m+[m[32m# ######################################################################[m
+[32m+[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m[32m# | Document modes                                                     |[m
+[32m+[m[32m# ----------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m# Force Internet Explorer 8/9/10 to render pages in the highest mode[m
+[32m+[m[32m# available in the various cases when it may not.[m
+[32m+[m[32m#[m
+[32m+[m[32m# https://hsivonen.fi/doctype/#ie8[m
+[32m+[m[32m#[m
+[32m+[m[32m# (!) Starting with Internet Explorer 11, document modes are deprecated.[m
+[32m+[m[32m# If your business still relies on older web apps and services that were[m
+[32m+[m[32m# designed for older versions of Internet Explorer, you might want to[m
+[32m+[m[32m# consider enabling `Enterprise Mode` throughout your compa
