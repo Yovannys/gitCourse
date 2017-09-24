@@ -19,3 +19,13 @@
   - Posicionarte en la rama final (donde quieres dejar el codigo final usando git checkout).
   - Hacer merge con la rama que estes interesado (los commits deben estar hechos o el working directory limpio)
   - git merge [rama-interes] :  git merge add-boostrap
+  
+# git flow: por cada caracteristica nueva se abre una nueva rama que son llamadas features branches:
+  - La rama master es la estable y contiene el codigo de produccion
+  - Se pueden tener ramas de release, hot fix, bugs
+
+# work flow: utilizado en entornos mas reales, es una nomclatura o convencion de nombres para ramas: 
+
+# pull request: contribucion o ayuda de codigo a alguien que lo necesite
+
+# git remote -v : Para ver los repositorios remotos
